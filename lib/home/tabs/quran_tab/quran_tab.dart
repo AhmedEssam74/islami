@@ -3,10 +3,36 @@ import 'package:islamy/home/tabs/quran_tab/sura_name_item_horizontal.dart';
 import 'package:islamy/home/tabs/quran_tab/sura_name_item_vertical.dart';
 import 'package:islamy/models/sura_details_model.dart';
 
-class QuranTab extends StatelessWidget {
-  const QuranTab({super.key});
+class QuranTab extends StatefulWidget {
+  QuranTab({super.key});
 
+  @override
+  State<QuranTab> createState() => _QuranTabState();
+}
 
+class _QuranTabState extends State<QuranTab> {
+  var searchController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    searchController.addListener(onSearch);
+    // setState(() {});
+  }
+
+  onSearch() {
+    SuraDetailsModel.searchSuraName.clear();
+    String text = searchController.text;
+    if (text.isNotEmpty) {
+      for (String data in SuraDetailsModel.suraNameEnglish) {
+        if (data.toLowerCase().contains(text.toLowerCase())) {
+          SuraDetailsModel.searchSuraName.add(data);
+          print(SuraDetailsModel.searchSuraName);
+        }
+      }
+    }
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +50,10 @@ class QuranTab extends StatelessWidget {
                 height: 170,
               )),
           _searchSuraItem(),
-          _suraNamesHorizontalList(),
+          if (SuraDetailsModel.searchSuraName.isEmpty &&
+              searchController.text.isEmpty) ...[
+            _suraNamesHorizontalList(),
+          ],
           _suraNamesVerticalList(),
         ],
       ),
@@ -61,8 +90,7 @@ class QuranTab extends StatelessWidget {
                 itemCount: SuraDetailsModel.suraNameArabic.length,
                 itemBuilder: (context, index) {
                   return SuraNameItemHorizontal(
-                    suraModel: SuraDetailsModel.getSuraModel(index)
-                  );
+                      suraModel: SuraDetailsModel.getSuraModel(index));
                 }),
           ),
         ),
@@ -102,11 +130,15 @@ class QuranTab extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 6),
                   child: SuraNameItemVertical(
-                    suraModel: SuraDetailsModel.getSuraModel(index),
+                    suraModel: searchController.text.isNotEmpty
+                        ? SuraDetailsModel.getSelectedSuraModel(index)
+                        : SuraDetailsModel.getSuraModel(index),
                   ),
                 );
               },
-              itemCount: SuraDetailsModel.length,
+              itemCount: searchController.text.isNotEmpty
+                  ? SuraDetailsModel.searchSuraName.length
+                  : SuraDetailsModel.length,
             ),
           ),
         ],
@@ -119,6 +151,7 @@ class QuranTab extends StatelessWidget {
     return Column(
       children: [
         TextField(
+          controller: searchController,
           style: const TextStyle(
               fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
           cursorColor: Colors.white,

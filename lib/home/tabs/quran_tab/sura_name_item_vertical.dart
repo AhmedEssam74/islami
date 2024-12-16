@@ -25,7 +25,7 @@ class SuraNameItemVertical extends StatelessWidget {
                       size: 60,
                     ),
                     Text(
-                      "${suraModel.index}",
+                      "${suraModel.index +1}",
                       style: const TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ],
