@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islamy/home/tabs/quran_tab/sura_name_item_horizontal.dart';
 import 'package:islamy/home/tabs/quran_tab/sura_name_item_vertical.dart';
 import 'package:islamy/models/sura_details_model.dart';
+import 'package:islamy/sura_details/sura_details.dart';
 
 class QuranTab extends StatefulWidget {
   QuranTab({super.key});
@@ -129,10 +130,16 @@ class _QuranTabState extends State<QuranTab> {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 6),
-                  child: SuraNameItemVertical(
-                    suraModel: searchController.text.isNotEmpty
-                        ? SuraDetailsModel.getSelectedSuraModel(index)
-                        : SuraDetailsModel.getSuraModel(index),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, SuraDetailsScreen.routeName,
+                          arguments: SuraDetailsModel.getSuraModel(index));
+                    },
+                    child: SuraNameItemVertical(
+                      suraModel: searchController.text.isNotEmpty
+                          ? SuraDetailsModel.getSelectedSuraModel(index)
+                          : SuraDetailsModel.getSuraModel(index),
+                    ),
                   ),
                 );
               },
