@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:islamy/models/sura_details_model.dart';
+import 'package:islamy/sura_details/sura_details.dart';
 
 class SuraNameItemVertical extends StatelessWidget {
-  int index;
-  int suraVerses;
-  String suraNameAr;
-  String suraNameEn;
+  SuraDetailsModel suraModel;
 
-  SuraNameItemVertical(
-      {super.key,
-      required this.index,
-      required this.suraNameAr,
-      required this.suraNameEn,
-      required this.suraVerses});
+  SuraNameItemVertical({super.key, required this.suraModel});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +25,7 @@ class SuraNameItemVertical extends StatelessWidget {
                       size: 60,
                     ),
                     Text(
-                      "$index",
+                      "${suraModel.index +1}",
                       style: const TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ],
@@ -43,7 +37,7 @@ class SuraNameItemVertical extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "$suraNameEn",
+                      suraModel.suraNameEn,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
@@ -51,7 +45,7 @@ class SuraNameItemVertical extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "$suraVerses Verses",
+                      "${suraModel.suraVerses} Verses",
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 14,
@@ -65,7 +59,7 @@ class SuraNameItemVertical extends StatelessWidget {
           ],
         ),
         Text(
-          "$suraNameAr",
+          suraModel.suraNameAr,
           style: const TextStyle(
             color: Colors.white,
             fontSize: 20,

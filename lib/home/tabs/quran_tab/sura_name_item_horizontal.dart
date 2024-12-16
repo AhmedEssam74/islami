@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:islamy/models/sura_details_model.dart';
 
 class SuraNameItemHorizontal extends StatelessWidget {
-  int suraVerses;
-  String suraNameAr;
-  String suraNameEn;
+  SuraDetailsModel suraModel ;
 
   SuraNameItemHorizontal(
       {super.key,
-      required this.suraNameAr,
-      required this.suraNameEn,
-      required this.suraVerses});
+      required this.suraModel});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xffE2BE7F),
+        color: const Color(0xffE2BE7F),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Padding(
@@ -27,7 +24,7 @@ class SuraNameItemHorizontal extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "$suraNameEn",
+                  suraModel.suraNameEn,
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 24,
@@ -35,7 +32,7 @@ class SuraNameItemHorizontal extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "$suraNameAr",
+                  suraModel.suraNameAr,
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 24,
@@ -43,7 +40,7 @@ class SuraNameItemHorizontal extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "$suraVerses Verses",
+                  "${suraModel.suraVerses} Verses",
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 14,
