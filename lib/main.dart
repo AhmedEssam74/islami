@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:islamy/my_them.dart';
 import 'package:islamy/onBoarding/onboarding_screen.dart';
 import 'package:islamy/sura_details/sura_details.dart';
 
 import 'home/home_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -16,10 +17,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: OnboardingScreen.routeName,
       debugShowCheckedModeBanner: false,
+      theme: MyThem.lightMode,
+      darkTheme: MyThem.darkMode,
+      themeMode: ThemeMode.light,
       routes: {
         HomeScreen.routeName: (context) => HomeScreen(),
         OnboardingScreen.routeName: (context) => OnboardingScreen(),
-        SuraDetailsScreen.routeName: (context) =>  SuraDetailsScreen(),
+        SuraDetailsScreen.routeName: (context) => const SuraDetailsScreen(),
       },
     );
   }

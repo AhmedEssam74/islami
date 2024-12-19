@@ -8,7 +8,7 @@ import 'package:islamy/home/tabs/sebha_tab.dart';
 class HomeScreen extends StatefulWidget {
   static const String routeName = "HomeScreen";
 
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -28,15 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
             fit: BoxFit.cover),
       ),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
         bottomNavigationBar: BottomNavigationBar(
-            showUnselectedLabels: false,
-            backgroundColor: const Color(0xffE2BE7F),
-            showSelectedLabels: true,
             currentIndex: currentIndex,
-            selectedItemColor: Colors.white,
-            unselectedItemColor: const Color(0xff202020),
-            type: BottomNavigationBarType.fixed,
             onTap: (value) {
               currentIndex = value;
               setState(() {});
@@ -60,10 +53,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> tabs = [
     QuranTab(),
-    AhadithTab(),
-    SebhaTab(),
-    RadioTab(),
-    DatesTab(),
+    const AhadithTab(),
+    const SebhaTab(),
+    const RadioTab(),
+    const DatesTab(),
   ];
 
   String backGroundImage() {

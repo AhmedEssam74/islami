@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:islamy/home/tabs/quran_tab/sura_name_item_horizontal.dart';
 import 'package:islamy/home/tabs/quran_tab/sura_name_item_vertical.dart';
 import 'package:islamy/models/sura_details_model.dart';
+import 'package:islamy/my_them.dart';
 import 'package:islamy/sura_details/sura_details.dart';
 
 class QuranTab extends StatefulWidget {
-  QuranTab({super.key});
+  const QuranTab({super.key});
 
   @override
   State<QuranTab> createState() => _QuranTabState();
@@ -28,7 +29,7 @@ class _QuranTabState extends State<QuranTab> {
       for (String data in SuraDetailsModel.suraNameEnglish) {
         if (data.toLowerCase().contains(text.toLowerCase())) {
           SuraDetailsModel.searchSuraName.add(data);
-          print(SuraDetailsModel.searchSuraName);
+          // print(SuraDetailsModel.searchSuraName);
         }
       }
     }
@@ -66,22 +67,17 @@ class _QuranTabState extends State<QuranTab> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           "Most Recently",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
-          ),
+          style: Theme.of(context).textTheme.titleSmall,
         ),
         const SizedBox(
           height: 10,
         ),
         // Horizontal List
-        Container(
+        SizedBox(
           width: double.infinity,
           height: 150,
-          // color: Colors.red,
           child: Expanded(
             child: ListView.separated(
                 separatorBuilder: (context, index) => const SizedBox(
@@ -109,13 +105,9 @@ class _QuranTabState extends State<QuranTab> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //Sura Details
-          const Text(
+          Text(
             "Sura List",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-            ),
+            style: Theme.of(context).textTheme.titleSmall,
           ),
           // Vertical List
           Expanded(
@@ -159,31 +151,35 @@ class _QuranTabState extends State<QuranTab> {
       children: [
         TextField(
           controller: searchController,
-          style: const TextStyle(
-              fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+          style: Theme.of(context).textTheme.titleSmall,
           cursorColor: Colors.white,
           decoration: InputDecoration(
             filled: true,
             fillColor: const Color(0xb3202020),
             focusColor: Colors.white,
             hintText: "Sura Name",
-            hintStyle: const TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+            hintStyle: Theme.of(context).textTheme.titleSmall,
             prefixIcon: const ImageIcon(
               AssetImage("assets/images/quran.png"),
-              color: Color(0xffE2BE7F),
+              color: MyThem.primaryColor,
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(color: Color(0xffE2BE7F)),
+              borderSide: const BorderSide(
+                color: MyThem.primaryColor,
+              ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(color: Color(0xffE2BE7F)),
+              borderSide: const BorderSide(
+                color: MyThem.primaryColor,
+              ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(color: Color(0xffE2BE7F)),
+              borderSide: const BorderSide(
+                color: MyThem.primaryColor,
+              ),
             ),
           ),
         ),
