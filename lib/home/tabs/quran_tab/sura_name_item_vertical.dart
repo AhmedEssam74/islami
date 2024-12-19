@@ -25,8 +25,8 @@ class SuraNameItemVertical extends StatelessWidget {
                       size: 60,
                     ),
                     Text(
-                      "${suraModel.index +1}",
-                      style: const TextStyle(color: Colors.white, fontSize: 16),
+                      "${suraModel.index + 1}",
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ],
                 ),
@@ -38,19 +38,13 @@ class SuraNameItemVertical extends StatelessWidget {
                   children: [
                     Text(
                       suraModel.suraNameEn,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
                     Text(
                       "${suraModel.suraVerses} Verses",
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                      ),
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                            fontSize: 14,
+                          ),
                     ),
                   ],
                 ),
@@ -60,10 +54,8 @@ class SuraNameItemVertical extends StatelessWidget {
         ),
         Text(
           suraModel.suraNameAr,
-          style: const TextStyle(
-            color: Colors.white,
+          style: Theme.of(context).textTheme.titleSmall!.copyWith(
             fontSize: 20,
-            fontWeight: FontWeight.w700,
           ),
         ),
       ],

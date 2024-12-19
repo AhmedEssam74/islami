@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islamy/models/sura_details_model.dart';
+import 'package:islamy/my_them.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   static const String routeName = "suraDetailsScreen";
 
-  SuraDetailsScreen({super.key});
+  const SuraDetailsScreen({super.key});
 
   @override
   State<SuraDetailsScreen> createState() => _SuraDetailsScreenState();
@@ -22,19 +23,9 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
       loadSuraFiles(suraModel.index + 1);
     }
     return Scaffold(
-      backgroundColor: Colors.transparent,
       appBar: AppBar(
-        iconTheme: const IconThemeData(
-          color: Color(0xffE2BE7F),
-        ),
-        backgroundColor: Colors.black,
-        centerTitle: true,
         title: Text(
           suraModel.suraNameEn,
-          style: const TextStyle(
-              color: Color(0xffE2BE7F),
-              fontSize: 20,
-              fontWeight: FontWeight.w700),
         ),
       ),
       body: Stack(
@@ -50,16 +41,13 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 30),
+                  margin: const EdgeInsets.only(top: 30),
                   child: Text(
                     suraModel.suraNameAr,
-                    style: const TextStyle(
-                        color: Color(0xffE2BE7F),
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700),
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 28,
                 ),
                 Expanded(
@@ -68,12 +56,12 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                         const SizedBox(height: 10),
                     itemBuilder: (context, index) {
                       return Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             border: Border.all(
-                              color: Color(0xffE2BE7F),
+                              color: MyThem.primaryColor,
                             )),
                         child: Directionality(
                           textDirection: TextDirection.rtl,
@@ -82,18 +70,18 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                             TextSpan(
                               children: [
                                 TextSpan(
-                                  text: "${suraLines[index]}",
-                                  style: const TextStyle(
-                                      color: Color(0xffE2BE7F),
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w700),
+                                  text: suraLines[index],
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
                                 ),
                                 TextSpan(
                                   text: "[${index + 1}]",
-                                  style: const TextStyle(
-                                      color: Color(0xffE2BE7F),
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w700),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium!
+                                      .copyWith(
+                                        fontSize: 18,
+                                      ),
                                 ),
                               ],
                             ),
@@ -115,7 +103,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   loadSuraFiles(int index) async {
     String suraFile = await rootBundle.loadString("assets/files/$index.txt");
     List<String> lines = suraFile.split("\n");
-    print(lines);
+    // print(lines);
     suraLines = lines;
     setState(() {});
   }

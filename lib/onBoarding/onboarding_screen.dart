@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:islamy/my_them.dart';
 
 import '../home/home_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   static const String routeName = "/";
-  Color mainColor = const Color(0xff202020);
+  Color dotsColor = const Color(0xff707070);
 
   OnboardingScreen({super.key});
 
@@ -18,66 +19,53 @@ class OnboardingScreen extends StatelessWidget {
     const bodyStyle = TextStyle(
       fontSize: 16.0,
       fontWeight: FontWeight.w700,
-      color: Color(0xffE2BE7F),
+      color: MyThem.primaryColor,
     );
 
     const pageDecoration = PageDecoration(
       titleTextStyle: TextStyle(
           fontSize: 24.0,
           fontWeight: FontWeight.w700,
-          // fontFamily: "assets/fonts/ElMessiri-Medium.ttf",
-          color: Color(0xffE2BE7F)),
+          color: MyThem.primaryColor),
       bodyTextStyle: bodyStyle,
       bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
-      pageColor: Color(0xff202020),
+      pageColor: MyThem.blackColor,
       imagePadding: EdgeInsets.zero,
       imageFlex: 4,
     );
 
     return IntroductionScreen(
-      globalBackgroundColor: const Color(0xff202020),
+      globalBackgroundColor: MyThem.blackColor,
       allowImplicitScrolling: true,
       //Finish Btn
       showDoneButton: true,
-      done: const Text(
+      done: Text(
         "Finish",
-        style: TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w700,
-          color: Color(0xffE2BE7F),
-        ),
+        style: Theme.of(context).textTheme.bodySmall,
       ),
       onDone: () {
         Navigator.pushNamed(context, HomeScreen.routeName);
-       },
+      },
       //Next Btn
       showNextButton: true,
-      next: const Text(
+      next: Text(
         "Next",
-        style: TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w700,
-          color: Color(0xffE2BE7F),
-        ),
+        style: Theme.of(context).textTheme.bodySmall,
       ),
       //Back Btn
       showBackButton: true,
-      back: const Text(
+      back: Text(
         "Back",
-        style: TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w700,
-          color: Color(0xffE2BE7F),
-        ),
+        style: Theme.of(context).textTheme.bodySmall,
       ),
       //
       // Dots
       dotsFlex: 3,
-      dotsDecorator: const DotsDecorator(
-        color: Color(0xff707070),
-        activeColor: Color(0xffE2BE7F),
-        activeSize: Size(24, 8),
-        activeShape: RoundedRectangleBorder(
+      dotsDecorator: DotsDecorator(
+        color: dotsColor,
+        activeColor: Theme.of(context).primaryColor,
+        activeSize: const Size(24, 8),
+        activeShape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(27),
           ),
@@ -129,36 +117,6 @@ class OnboardingScreen extends StatelessWidget {
           decoration: pageDecoration,
         ),
       ],
-      // onDone: () => _onIntroEnd(context),
-      // onSkip: () => _onIntroEnd(context), // You can override onSkip callback
-      // showSkipButton: true,
-      // skipOrBackFlex: 0,
-      // nextFlex: 0,
-      // showBackButton: false,
-      // rtl: true, // Display as right-to-left
-      // back: const Icon(Icons.arrow_back),
-      // skip: const Text('Skip', style: TextStyle(fontWeight: FontWeight.w600)),
-      // next: const Icon(Icons.arrow_forward),
-      // done: const Text('Done', style: TextStyle(fontWeight: FontWeight.w600)),
-      // curve: Curves.fastLinearToSlowEaseIn,
-      // controlsMargin: const EdgeInsets.all(16),
-      // controlsPadding: kIsWeb
-      //     ? const EdgeInsets.all(12.0)
-      //     : const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
-      // dotsDecorator: const DotsDecorator(
-      //   size: Size(10.0, 10.0),
-      //   color: Color(0xFFBDBDBD),
-      //   activeSize: Size(22.0, 10.0),
-      //   activeShape: RoundedRectangleBorder(
-      //     borderRadius: BorderRadius.all(Radius.circular(25.0)),
-      //   ),
-      // ),
-      // dotsContainerDecorator: const ShapeDecoration(
-      //   color: Colors.black87,
-      //   shape: RoundedRectangleBorder(
-      //     borderRadius: BorderRadius.all(Radius.circular(8.0)),
-      //   ),
-      // ),
     );
   }
 }

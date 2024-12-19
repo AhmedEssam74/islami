@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islamy/models/sura_details_model.dart';
+import 'package:islamy/my_them.dart';
 
 class SuraNameItemHorizontal extends StatelessWidget {
   SuraDetailsModel suraModel ;
@@ -12,7 +13,7 @@ class SuraNameItemHorizontal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xffE2BE7F),
+        color: MyThem.primaryColor,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Padding(
@@ -25,26 +26,20 @@ class SuraNameItemHorizontal extends StatelessWidget {
               children: [
                 Text(
                   suraModel.suraNameEn,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    color: Colors.black
                   ),
                 ),
                 Text(
                   suraModel.suraNameAr,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      color: Colors.black
                   ),
                 ),
                 Text(
                   "${suraModel.suraVerses} Verses",
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      color: Colors.black
                   ),
                 )
               ],
