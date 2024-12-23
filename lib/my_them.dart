@@ -52,6 +52,10 @@ class MyThem {
         color: Colors.black,
         fontSize: 24,
         fontWeight: FontWeight.w700,
+      ),bodyLarge: TextStyle(
+        color: Colors.white,
+        fontSize: 36,
+        fontWeight: FontWeight.bold,
       ),
     ),
   );

@@ -5,7 +5,7 @@ import 'package:islamy/home/tabs/ahadeth_tap/hadeth_details_screen.dart';
 import 'package:islamy/models/hadeth_model.dart';
 
 class AhadithTab extends StatefulWidget {
-  AhadithTab({super.key});
+  const AhadithTab({super.key});
 
   @override
   State<AhadithTab> createState() => _AhadithTabState();
@@ -77,7 +77,7 @@ class _AhadithTabState extends State<AhadithTab> {
                         children: [
                           Container(
                             margin: const EdgeInsets.only(top: 50),
-                            padding: EdgeInsets.symmetric(horizontal: 16),
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
                             child: Text(
                               hadeth.tittle,
                               textAlign: TextAlign.center,
