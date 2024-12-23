@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamy/home/tabs/ahadeth_tap/hadeth_details_screen.dart';
 import 'package:islamy/my_them.dart';
 import 'package:islamy/onBoarding/onboarding_screen.dart';
 import 'package:islamy/sura_details/sura_details.dart';
@@ -21,9 +22,10 @@ class MyApp extends StatelessWidget {
       darkTheme: MyThem.darkMode,
       themeMode: ThemeMode.light,
       routes: {
-        HomeScreen.routeName: (context) => HomeScreen(),
-        OnboardingScreen.routeName: (context) => OnboardingScreen(),
+        HomeScreen.routeName: (context) => const HomeScreen(),
+        OnboardingScreen.routeName: (context) =>  OnboardingScreen(),
         SuraDetailsScreen.routeName: (context) => const SuraDetailsScreen(),
+        HadethDetailsScreen.routName: (context) => const HadethDetailsScreen(),
       },
     );
   }

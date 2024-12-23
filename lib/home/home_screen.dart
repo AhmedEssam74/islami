@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islamy/home/tabs/ahadith_tab.dart';
+import 'package:islamy/home/tabs/ahadeth_tap/ahadith_tab.dart';
 import 'package:islamy/home/tabs/dates_tab.dart';
 import 'package:islamy/home/tabs/quran_tab/quran_tab.dart';
 import 'package:islamy/home/tabs/radio_tab.dart';
@@ -52,9 +52,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   List<Widget> tabs = [
-    QuranTab(),
-    const AhadithTab(),
-    const SebhaTab(),
+    const QuranTab(),
+    AhadithTab(),
+    SebhaTab(),
     const RadioTab(),
     const DatesTab(),
   ];
