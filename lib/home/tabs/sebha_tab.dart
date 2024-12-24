@@ -12,6 +12,8 @@ class _SebhaTabState extends State<SebhaTab> {
   int counter = 0;
   List<String> tasabeh = ["سبحان الله", "الحمدلله", "الله اكبر"];
   String label = "";
+  double turns = 0.0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -50,14 +52,21 @@ class _SebhaTabState extends State<SebhaTab> {
                       counter = 0;
                     }
                   }
-                  setState(() {});
+                  setState(() => turns += 1.0 / 30);
                 },
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
-                    Image.asset(
-                      "assets/images/tasbeh_bg.png",
-                      fit: BoxFit.fill,
+                    AnimatedRotation(
+                      turns: turns,
+                      duration: Duration(milliseconds: 500),
+                      child: Column(
+                        children: <Widget>[
+                          Image.asset(
+                            "assets/images/tasbeh_bg.png",
+                          )
+                        ],
+                      ),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
